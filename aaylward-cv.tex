@@ -281,30 +281,26 @@
 % Additional Information can be passed in text or list form (or other environments).
 % the work you did
 % param 1: time-frame i.e. Sep 14 - Jan 15 etc.
-% param 2:	 event name (job position etc.)
-% param 3: Customer, Employer, Industry
-% param 4: Short description
-% param 5: work done (optional)
-% param 6: technologies include (optional)
-% param 7: achievements (optional)
-\newcommand{\cvevent}[7] {
+% param 2: event name (job position etc.)
+% param 3: Employer
+% param 4: Industry
+% param 5: Short description (optional)
+% param 6: 
+% param 7: 
+% param 8: 
+\newcommand{\cvevent}[8] {
 	
 	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
 	% if you need more control on page breaks, remove the parbox
 	\parbox{\mpwidth}{
-		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{black}{\textbf{#2}} & \colorbox{expcol}{\makebox[0.28\mpwidth]{\textcolor{white}{\small{#1}}}} \\
-			\textcolor{expcol}{\textbf{#3}} & \\
+		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth} @{\extracolsep{\fill}}  r}
+	 		\textcolor{black}{\textbf{#2}} ~ {#3} & \colorbox{expcol}{\makebox[0.28\mpwidth]{\textcolor{white}{\small{#1}}}} \\
+			\textcolor{expcol}{\textbf{#4}} & \\
 		\end{tabular*}\\[8pt]
 	
-		\ifthenelse{\isempty{#4}}{}{
-			\cvtext{#4}\\
+		\ifthenelse{\isempty{#5}}{}{
+			\cvtext{#5}\\
 		}
-	}
-
-	\ifthenelse{\isempty{#5}}{}{
-		\vspace{9pt}
-		{#5}
 	}
 
 	\ifthenelse{\isempty{#6}}{}{
@@ -315,6 +311,11 @@
 	\ifthenelse{\isempty{#7}}{}{
 		\vspace{9pt}
 		{#7}
+	}
+
+	\ifthenelse{\isempty{#8}}{}{
+		\vspace{9pt}
+		{#8}
 	}
 	\vspace{14pt}
 }
@@ -336,7 +337,7 @@
 	}
 
 	\ifthenelse{\isempty{#3}}{}{
-		\cvtext{{ \textcolor{black} {#3} }}\\
+		\cvtext{{ {#3} }}\\
 	}
 
 	\cvtext{#4}\\[14pt]
@@ -447,6 +448,7 @@
 %---------------------------------------------------------------------------------------
 %	PROFILE
 %----------------------------------------------------------------------------------------
+\newpage
 \vfill\null
 \cvsection{PROFILE}{darkcol}
 
@@ -477,46 +479,48 @@ relaxing run through the park with his golden retriever, Cali.
 %	QR CODE
 %----------------------------------------------------------------------------------------
 
-\begin{tabular*}{1\mpwidth}{p{0.5\mpwidth} @{\extracolsep{\fill} } p{0.3\mpwidth}}
+\begin{tabular*}{1\mpwidth}{@{} p{0.48\mpwidth} @{\extracolsep{\fill}} p{0.3\mpwidth} }
 	\cvsection{ONLINE CV}{darkcol} \cvtext{Scan the QR code or
 	  \href{https://anthony-aylward.github.io}{\underline{click here}} to view an
 		extended online CV.} & \cvqrcode{1} \\
 \end{tabular*}
 
+\vspace{-3ex}
+
 %---------------------------------------------------------------------------------------
 %	EXPERIENCE
 %----------------------------------------------------------------------------------------
-% \vfill\null
+
 \cvsection{EXPERIENCE}{expcol}
 
 \cvevent
 	{Sep 2013 - Jul 2021}
 	{PhD Student}
+	{UC San Diego}
 	{Bioinformatics \& Systems Biology}
-	{}
+	{Directly managed two long-term collaborative research projects that led to scientific publications in peer-reviewed journals}
 	{\cvtext{\textbf{Bioinformatics / statistics:}}\\ 
 	  \cvlist {
-		\item Software tools for NGS DNA sequencing data
-		\item Programming with Python for bioinformatics applications
-		\item Programming with R and Bioconductor for bioinformatics and statistics
-		\item Statistical reasoning, drawing on 6 years of classroom training in math / statistics and further independent learning during graduate school. Routinely advised other graduate students and postdocs on statistical analysis questions.
+		\item Processed hundreds of NGS DNA sequencing datasets using standard tools such as \texttt{bowtie2}, \texttt{bwa}, \texttt{samtools}, \texttt{bedtools}, etc
+		\item Developed over a dozen Python packages to facilitate and automate data analysis pipelines
+		\item Used Bioconductor and other R packages, including my own, to perform bioinformatics \& statistical analyses
+		\item Routinely advised other graduate students and postdocs on statistical analysis questions.
 	}}
 	{\cvtext{\textbf{Machine learning / data science}}\\
 	  \cvlist{
-		\item Extensive study of machine learning methods as part of graduate course cirriculum and independently. Familiar with time series analysis, Markov models, decision trees, random forests, support vector machines, neural networks, etc.
-		\item Proficiency with Jupyter Notebooks
+		\item Extensively studied and applied machine learning methods as part of graduate course cirriculum and independently. Markov models, random forests, support vector machines, neural networks, etc.
+		\item Documented and presented data analysis methods using Jupyter Notebooks
 	}}
 	{\cvtext{\textbf{Software / computing:}}\\
 		\cvlist{
-		\item Linux and MacOS command line environments. Also capable of working with Windows. Acted as a primary system administrator for lab computing resources for several years. 
-		\item Python and SQL for web applications. Made occasional contributions to the design and implementation of the Diabetes Epigenome Atlas.
+		\item Acted as a primary system administrator for lab computing resources for several years, becoming deeply familiar with Linux and MacOS command line environments. Also capable of working with Windows.  
+		\item Made occasional contributions to the design and implementation of the Diabetes Epigenome Atlas, using Python and SQL. 
 	}}
-
-\vfill\null
 
 \cvevent
 	{Sep 2012 - Sep 2013}
 	{Research Assistant}
+	{CSU Chico}
 	{Mathematical Biology}
 	{Developed a mathematical model for angiogenesis (growth of blood vessels) in mouse retina}
 	{}
@@ -527,6 +531,7 @@ relaxing run through the park with his golden retriever, Cali.
 %	PUBLICATIONS
 %----------------------------------------------------------------------------------------
 
+\newpage
 \vfill\null
 \cvsection{PUBLICATIONS}{pubcol}
 
