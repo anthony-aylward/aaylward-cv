@@ -88,7 +88,7 @@
 
 % icon shortcut
 \newcommand{\icon}[3] { 							
-	\makebox(#2, #2){\textcolor{maincol}{\csname fa#1\endcsname}}
+	\makebox(#2, #2){\textcolor{contactcol}{\csname fa#1\endcsname}}
 }	
 
 % icon with text shortcut
@@ -179,6 +179,25 @@
 % light color
 \definecolor{lightcol}{RGB}{242, 242, 242}
 
+% skills color
+\definecolor{skillcol}{RGB}{ 55, 126, 184 }
+% \definecolor{skillcol}{RGB}{ 228, 26, 28 }
+
+% contact color
+\definecolor{contactcol}{RGB}{ 228, 26, 28 }
+% \definecolor{contactcol}{RGB}{ 55, 126, 184 }
+
+% education color
+\definecolor{educol}{RGB}{ 77, 175, 74 }
+
+% experience color
+\definecolor{expcol}{RGB}{ 255, 127, 0 }
+% \definecolor{expcol}{RGB}{ 255, 127, 0 }
+
+% publications color
+\definecolor{pubcol}{RGB}{ 152, 78, 163  }
+% \definecolor{pubcol}{RGB}{ 166, 86, 40 }
+
 
 % Package for links, must be the last package used
 \usepackage[hidelinks]{hyperref}
@@ -224,11 +243,11 @@
 
 % Renders a a CV section headline with a nice underline in main color.
 % param 1: section title
-\newcommand{\cvsection}[1] {
+\newcommand{\cvsection}[2] {
 	\vspace{14pt}
 	\cvtext{
 		\textbf{\LARGE{\textcolor{darkcol}{\uppercase{#1}}}}\\[-4pt]
-		\textcolor{maincol}{ \rule{0.1\textwidth}{2pt} } \\
+		\textcolor{#2}{ \rule{0.1\textwidth}{2pt} } \\
 	}
 }
 
@@ -242,13 +261,13 @@
 % param 3: percent, values range from 0 to 1
 \newcommand{\cvskill}[3] {
 	\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
- 		\textcolor{black}{\textbf{#1}} & \textcolor{maincol}{#2}\\
+ 		\textcolor{black}{\textbf{#1}} & \textcolor{skillcol}{#2}\\
 	\end{tabular*}%
 	
 	\hspace{4pt}
 	\begin{tikzpicture}[scale=1,rounded corners=2pt,very thin]
 		\fill [lightcol] (0,0) rectangle (1\mpwidth, 0.15);
-		\fill [maincol] (0,0) rectangle (#3\mpwidth, 0.15);
+		\fill [skillcol] (0,0) rectangle (#3\mpwidth, 0.15);
   	\end{tikzpicture}%
 }
 
@@ -274,8 +293,8 @@
 	% if you need more control on page breaks, remove the parbox
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{black}{\textbf{#2}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
-			\textcolor{maincol}{\textbf{#3}} & \\
+	 		\textcolor{black}{\textbf{#2}} & \colorbox{expcol}{\makebox[0.28\mpwidth]{\textcolor{white}{\small{#1}}}} \\
+			\textcolor{expcol}{\textbf{#3}} & \\
 		\end{tabular*}\\[8pt]
 	
 		\ifthenelse{\isempty{#4}}{}{
@@ -310,14 +329,14 @@
 % param 3: customer, employer, etc,. (optional)
 % param 4: info text (optional)
 \newcommand{\cvmetaevent}[4] {
-	\textcolor{maincol} {\cvtext{\textbf{\begin{flushleft}#1\end{flushleft}}}}
+	\textcolor{darkcol} {\cvtext{\textbf{\begin{flushleft}#1\end{flushleft}}}}
 
 	\ifthenelse{\isempty{#2}}{}{
-	\textcolor{darkcol} {\cvtext{\textbf{#2}} }
+	\textcolor{educol} {\cvtext{\textbf{#2}} }
 	}
 
 	\ifthenelse{\isempty{#3}}{}{
-		\cvtext{{ \textcolor{darkcol} {#3} }}\\
+		\cvtext{{ \textcolor{black} {#3} }}\\
 	}
 
 	\cvtext{#4}\\[14pt]
@@ -331,7 +350,7 @@
 % param 1: percent width, from 0 to 1
 \newcommand{\cvqrcode}[1] {
 	\begin{center}
-		\includegraphics[width={#1}\mpwidth]{qrcode}
+		\includegraphics[width={#1}\mpwidth]{aaylward-cv-qr.png}
 	\end{center}
 }
 
@@ -349,8 +368,8 @@
 	% if you need more control on page breaks, remove the parbox
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{black}{#2} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
-			\textcolor{maincol}{\emph{#3}} & \\
+	 		\textcolor{black}{#2} & \colorbox{pubcol}{\makebox[0.28\mpwidth]{\textcolor{white}{\small{#1}}}} \\
+			\textcolor{pubcol}{\emph{#3}} & \\
 		\end{tabular*}\\[8pt]
 	}
 
@@ -380,22 +399,10 @@
 \includegraphics[width=\linewidth]{aaylward-cv-cropped.jpg}	%trimming relative to image size
 
 %---------------------------------------------------------------------------------------
-%	META SKILLS
+%	META CONTACT
 %----------------------------------------------------------------------------------------
-\cvsection{SKILLS}
 
-\cvskill{Python} {6+ yrs} {1} \\[-2pt]
-
-\cvskill{R} {6+ yrs} {1} \\[-2pt]
-
-\cvskill{NGS data} {5+ yrs} {1} \\[-2pt]
-
-\cvskill{Machine learning} {5+ yrs} {0.8} \\[-2pt]
-
-\cvskill{Linux} {5+ yrs} {0.7} \\[-2pt]
-
-\vfill\null
-\cvsection{CONTACT}
+\cvsection{CONTACT}{contactcol}
 	
 \icontext{MapMarker}{12}{San Diego, CA}{black}\\[6pt]
 \icontext{MobilePhone}{12}{(530) 774-6697}{black}\\[6pt]
@@ -404,21 +411,52 @@
 \vfill\null
 
 %---------------------------------------------------------------------------------------
+%	META SKILLS
+%----------------------------------------------------------------------------------------
+\cvsection{SKILLS}{skillcol}
+
+\cvskill{Python} {7+ yrs} {1} \\[-2pt]
+
+\cvskill{R} {7+ yrs} {1} \\[-2pt]
+
+\cvskill{NGS data} {5+ yrs} {1} \\[-2pt]
+
+\cvskill{Machine learning} {5+ yrs} {0.8} \\[-2pt]
+
+\cvskill{Linux} {5+ yrs} {0.7} \\[-2pt]
+
+\vfill\null
+
+%---------------------------------------------------------------------------------------
 %	EDUCATION
 %----------------------------------------------------------------------------------------
-\cvsection{EDUCATION}
+\cvsection{EDUCATION}{educol}
 
 \cvmetaevent
-{2013 - 2021}
+{Sep 2013 - Jul 2021}
 {PhD Bioinformatics \& Systems Biology}
 {UC San Diego}
 {Dissertation on statistical genetics methods for diabetes research}
 
 \cvmetaevent
-{2008 - 2012}
+{Sep 2008 - Jun 2012}
 {BS Mathematics}
 {UC Santa Barbara}
 {Thesis on mathematical ecology}
+
+%---------------------------------------------------------------------------------------
+%	PROFILE
+%----------------------------------------------------------------------------------------
+\vfill\null
+\cvsection{PROFILE}{darkcol}
+
+\cvtext{Anthony is a PhD bioinformatics scientist, fascinated by the
+ever-growing wealth of knowledge contained in large-scale biological datasets.
+His graduate school research focused on statistical genetics and diabetes.\\
+
+When not analyzing data, Anthony enjoys an exciting game of Rocket League or a
+relaxing run through the park with his golden retriever, Cali.
+}
 
 \end{leftcolumn}
 \begin{rightcolumn}
@@ -430,87 +468,96 @@
 	\begin {center}
 		\HUGE{ \textbf{ \textcolor{white}{ { Anthony Aylward } } } } \\[-24pt]
 		\textcolor{white}{ \rule{0.7\textwidth}{1.25pt} } \\[4pt]
-		\large{ \textcolor{white} {Bioinfomatics \& Data Scientist} }
+		\large{ \textcolor{white} {Bioinfomatician \& Data Scientist} }
 	\end {center}
 \end{minipage}} \\[14pt]
 \vspace{-12pt}
 
 %---------------------------------------------------------------------------------------
-%	PROFILE
+%	QR CODE
 %----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{PROFILE}
 
-\cvtext{Anthony is a PhD bioinformatics scientist, fascinated by the
-ever-growing wealth of knowledge contained in large-scale biological datasets.
-His graduate school research focused on statistical genetics and diabetes.\\
-
-When not analyzing data, Anthony enjoys an exciting game of Rocket League or a
-relaxing run through the park with his golden retriever, Cali.
-
-% \href{https://anthony-aylward.github.io/}{\underline{Online CV}}
-}
+\begin{tabular*}{1\mpwidth}{p{0.5\mpwidth} @{\extracolsep{\fill} } p{0.3\mpwidth}}
+	\cvsection{ONLINE CV}{darkcol} \cvtext{Scan the QR code or
+	  \href{https://anthony-aylward.github.io}{\underline{click here}} to view an
+		extended online CV.} & \cvqrcode{1} \\
+\end{tabular*}
 
 %---------------------------------------------------------------------------------------
 %	EXPERIENCE
 %----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{EXPERIENCE}
+% \vfill\null
+\cvsection{EXPERIENCE}{expcol}
 
 \cvevent
-	{2013 - 2021}
-	{PhD student}
+	{Sep 2013 - Jul 2021}
+	{PhD Student}
 	{Bioinformatics \& Systems Biology}
-	{Statistical strateges and resources for genetic fine-mapping of diabetes-associated variants}
-	{\cvlist{
-		\item item1
-		\item item2
-		\item Development of new role-based workfows and processes, as well as training and support
-		\item Maintenance of existing infrastructure
+	{}
+	{\cvtext{\textbf{Bioinformatics / statistics:}}\\ 
+	  \cvlist {
+		\item Software tools for NGS DNA sequencing data
+		\item Programming with Python for bioinformatics applications
+		\item Programming with R and Bioconductor for bioinformatics and statistics
+		\item Statistical reasoning, drawing on 6 years of classroom training in math / statistics and further independent learning during graduate school. Routinely advised other graduate students and postdocs on statistical analysis questions.
 	}}
-	{\cvtext{\textbf{Technologies include:}}\\ 
-	  \cvlist { % Technologies include
-		\item Django for the roles- and rights management tool backend (backend is a REST interface)
-		\item Angular for the easy frontend interaction
-		\item HTML5/CSS3/Bootstrap3 for the frontend
-		\item Ansible + Docker for 1-click deployments
-	}}
-	{\cvtext{\textbf{Achievements include:}}\\
+	{\cvtext{\textbf{Machine learning / data science}}\\
 	  \cvlist{
-		\item A web based tool for an intuitive role assignment and administration
-		\item Online overview of company structures, projects, etc
-		\item Tools for role review, reporting and troubleshooting
+		\item Extensive study of machine learning methods as part of graduate course cirriculum and independently. Familiar with time series analysis, Markov models, decision trees, random forests, support vector machines, neural networks, etc.
+		\item Proficiency with Jupyter Notebooks
 	}}
+	{\cvtext{\textbf{Software / computing:}}\\
+		\cvlist{
+		\item Linux and MacOS command line environments. Also capable of working with Windows. Acted as a primary system administrator for lab computing resources for several years. 
+		\item Python and SQL for web applications. Made occasional contributions to the design and implementation of the Diabetes Epigenome Atlas.
+	}}
+
+\vfill\null
+
+\cvevent
+	{Sep 2012 - Sep 2013}
+	{Research Assistant}
+	{Mathematical Biology}
+	{Developed a mathematical model for angiogenesis (growth of blood vessels) in mouse retina}
+	{}
+	{}
+	{}
 
 %---------------------------------------------------------------------------------------
 %	PUBLICATIONS
 %----------------------------------------------------------------------------------------
+
 \vfill\null
-\cvsection{PUBLICATIONS}
+\cvsection{PUBLICATIONS}{pubcol}
 
 \cvtext{\textbf{First author:}}\\
 
 \cvpublication
 	{May 2021}
-	{Glucocorticoid signaling in pancreatic islets modulates gene regulatory programs and genetic risk of type 2 diabetes}
+	{\textbf{Aylward et al.} Glucocorticoid signaling in pancreatic islets modulates gene regulatory programs and genetic risk of type 2 diabetes}
 	{PLOS Genetics}
 
 \cvpublication
-	{Nov. 2018}
-	{Shared genetic risk contributes to type 1 and type 2 diabetes etiology}
+	{Nov 2018}
+	{\textbf{Aylward et al.} Shared genetic risk contributes to type 1 and type 2 diabetes etiology}
 	{Human Molecular Genetics}
 
 	\cvtext{\textbf{Other:}}\\
 
 \cvpublication
-	{May 2021}
-	{Glucocorticoid signaling in pancreatic islets modulates gene regulatory programs and genetic risk of type 2 diabetes}
-	{PLOS Genetics}
+	{Feb 2021}
+	{\textbf{Geusz et al.} Pancreatic progenitor epigenome maps prioritize type 2 diabetes risk genes with roles in development}
+	{eLife}
 
 \cvpublication
-	{Nov. 2018}
-	{Shared genetic risk contributes to type 1 and type 2 diabetes etiology}
-	{Human Molecular Genetics}
+	{May 2019}
+	{\textbf{Greenwald et al.} Pancreatic islet chromatin accessibility and conformation reveals distal enhancer networks of type 2 diabetes risk}
+	{Nature Communications}
+
+\cvpublication
+	{Feb 2015}
+	{\textbf{Murrel et al.} Gene-Wide Identification of Episodic Selection}
+	{Molecular Biology and Evolution}
 
 \end{rightcolumn}
 \end{paracol}
