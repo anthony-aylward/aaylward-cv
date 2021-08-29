@@ -1,7 +1,7 @@
 %-----------------------------------------------------------------------------------------------------------------------------------------------%
 %	The MIT License (MIT)
 %
-%	Copyright (c) 2019 Jan Küster
+%	Copyright (c) 2021 Jan Küster, Anthony Aylward
 %
 %	Permission is hereby granted, free of charge, to any person obtaining a copy
 %	of this software and associated documentation files (the "Software"), to deal
@@ -168,7 +168,7 @@
 \usepackage{color}
 
 % primary color
-\definecolor{maincol}{RGB}{ 225, 0, 0 }
+\definecolor{maincol}{RGB}{ 228, 26, 28 }
 
 % accent color, secondary
 % \definecolor{accentcol}{RGB}{ 250, 150, 10 }
@@ -177,7 +177,7 @@
 \definecolor{darkcol}{RGB}{ 70, 70, 70 }
 
 % light color
-\definecolor{lightcol}{RGB}{245,245,245}
+\definecolor{lightcol}{RGB}{242, 242, 242}
 
 
 % Package for links, must be the last package used
@@ -290,13 +290,11 @@
 
 	\ifthenelse{\isempty{#6}}{}{
 		\vspace{9pt}
-		\cvtext{\textbf{Technologies include:}}\\
 		{#6}
 	}
 
 	\ifthenelse{\isempty{#7}}{}{
 		\vspace{9pt}
-		\cvtext{\textbf{Achievements include:}}\\
 		{#7}
 	}
 	\vspace{14pt}
@@ -337,6 +335,28 @@
 	\end{center}
 }
 
+%----------------------------------------------------------------------------------------
+%	 CV PUBLICATION
+%----------------------------------------------------------------------------------------
+
+% param 1: Date
+% param 2: Title
+% param 3: Journal
+% param 4: Authors 
+\newcommand{\cvpublication}[3] {
+	
+	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
+	% if you need more control on page breaks, remove the parbox
+	\parbox{\mpwidth}{
+		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
+	 		\textcolor{black}{#2} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
+			\textcolor{maincol}{\emph{#3}} & \\
+		\end{tabular*}\\[8pt]
+	}
+
+	\vspace{14pt}
+}
+
 
 %============================================================================%
 %
@@ -364,17 +384,15 @@
 %----------------------------------------------------------------------------------------
 \cvsection{SKILLS}
 
-\cvskill{Python} {5+ yrs} {1} \\[-2pt]
+\cvskill{Python} {6+ yrs} {1} \\[-2pt]
 
-\cvskill{R} {5+ yrs} {1} \\[-2pt]
+\cvskill{R} {6+ yrs} {1} \\[-2pt]
 
-\cvskill{Linux} {5+ yrs} {1} \\[-2pt]
+\cvskill{NGS data} {5+ yrs} {1} \\[-2pt]
 
-\cvskill{Open Source Tools} {5+ yrs} {1} \\[-2pt]
+\cvskill{Machine learning} {5+ yrs} {0.8} \\[-2pt]
 
-\cvskill{GIT} {3+ yrs} {1} \\[-2pt]
-
-
+\cvskill{Linux} {5+ yrs} {0.7} \\[-2pt]
 
 \vfill\null
 \cvsection{CONTACT}
@@ -394,13 +412,13 @@
 {2013 - 2021}
 {PhD Bioinformatics \& Systems Biology}
 {UC San Diego}
-{Wrote dissertation on statistical genetics methods for diabetes research}
+{Dissertation on statistical genetics methods for diabetes research}
 
 \cvmetaevent
 {2008 - 2012}
 {BS Mathematics}
 {UC Santa Barbara}
-{Wrote thesis on mathematical ecology}
+{Thesis on mathematical ecology}
 
 \end{leftcolumn}
 \begin{rightcolumn}
@@ -423,8 +441,14 @@
 \vfill\null
 \cvsection{PROFILE}
 
-\cvtext{PhD bioinformatics scientist with a passion for building robust and usable software tools.\\
+\cvtext{Anthony is a PhD bioinformatics scientist, fascinated by the
+ever-growing wealth of knowledge contained in large-scale biological datasets.
+His graduate school research focused on statistical genetics and diabetes.\\
 
+When not analyzing data, Anthony enjoys an exciting game of Rocket League or a
+relaxing run through the park with his golden retriever, Cali.
+
+% \href{https://anthony-aylward.github.io/}{\underline{Online CV}}
 }
 
 %---------------------------------------------------------------------------------------
@@ -434,7 +458,7 @@
 \cvsection{EXPERIENCE}
 
 \cvevent
-	{2013-2021}
+	{2013 - 2021}
 	{PhD student}
 	{Bioinformatics \& Systems Biology}
 	{Statistical strateges and resources for genetic fine-mapping of diabetes-associated variants}
@@ -444,17 +468,49 @@
 		\item Development of new role-based workfows and processes, as well as training and support
 		\item Maintenance of existing infrastructure
 	}}
-	{\cvlist { % Technologies include
+	{\cvtext{\textbf{Technologies include:}}\\ 
+	  \cvlist { % Technologies include
 		\item Django for the roles- and rights management tool backend (backend is a REST interface)
 		\item Angular for the easy frontend interaction
 		\item HTML5/CSS3/Bootstrap3 for the frontend
 		\item Ansible + Docker for 1-click deployments
 	}}
-	{\cvlist{ % Achievements include
+	{\cvtext{\textbf{Achievements include:}}\\
+	  \cvlist{
 		\item A web based tool for an intuitive role assignment and administration
 		\item Online overview of company structures, projects, etc
 		\item Tools for role review, reporting and troubleshooting
 	}}
+
+%---------------------------------------------------------------------------------------
+%	PUBLICATIONS
+%----------------------------------------------------------------------------------------
+\vfill\null
+\cvsection{PUBLICATIONS}
+
+\cvtext{\textbf{First author:}}\\
+
+\cvpublication
+	{May 2021}
+	{Glucocorticoid signaling in pancreatic islets modulates gene regulatory programs and genetic risk of type 2 diabetes}
+	{PLOS Genetics}
+
+\cvpublication
+	{Nov. 2018}
+	{Shared genetic risk contributes to type 1 and type 2 diabetes etiology}
+	{Human Molecular Genetics}
+
+	\cvtext{\textbf{Other:}}\\
+
+\cvpublication
+	{May 2021}
+	{Glucocorticoid signaling in pancreatic islets modulates gene regulatory programs and genetic risk of type 2 diabetes}
+	{PLOS Genetics}
+
+\cvpublication
+	{Nov. 2018}
+	{Shared genetic risk contributes to type 1 and type 2 diabetes etiology}
+	{Human Molecular Genetics}
 
 \end{rightcolumn}
 \end{paracol}
